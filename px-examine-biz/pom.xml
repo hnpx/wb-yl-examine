@@ -1,0 +1,158 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+            http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.px</groupId>
+        <artifactId>px-examine</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>px-examine-biz</artifactId>
+    <packaging>jar</packaging>
+
+    <description>archetype gen</description>
+
+    <dependencies>
+        <!--必备: 依赖api模块-->
+        <dependency>
+            <groupId>com.px</groupId>
+            <artifactId>px-examine-api</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.px</groupId>
+            <artifactId>px-examine-common</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <!--必备：sentient-->
+        <dependency>
+            <groupId>com.pig4cloud</groupId>
+            <artifactId>px-common-sentinel</artifactId>
+            <version>2.9.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <!--日志处理-->
+        <!--		<dependency>-->
+        <!--			<groupId>com.pig4cloud</groupId>-->
+        <!--			<artifactId>px-common-log</artifactId>-->
+        <!--			<version>2.9.1</version>-->
+        <!--		</dependency>-->
+        <!--必备：swagger-->
+        <!--		<dependency>-->
+        <!--			<groupId>com.pig4cloud</groupId>-->
+        <!--			<artifactId>px-common-swagger</artifactId>-->
+        <!--			<version>2.9.1</version>-->
+        <!--		</dependency>-->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>2.9.2</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>2.9.2</version>
+        </dependency>
+        <!--必备: 注册中心客户端-->
+        <!--		<dependency>-->
+        <!--			<groupId>com.alibaba.cloud</groupId>-->
+        <!--			<artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>-->
+        <!--		</dependency>-->
+        <!--必备: 配置中心客户端-->
+        <!--		<dependency>-->
+        <!--			<groupId>com.alibaba.cloud</groupId>-->
+        <!--			<artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>-->
+        <!--		</dependency>-->
+        <!--可选：mybatis （需要链接数据库开启）-->
+        <dependency>
+            <groupId>com.pig4cloud</groupId>
+            <artifactId>px-common-mybatis</artifactId>
+            <version>2.9.1</version>
+        </dependency>
+        <!--必备：web 模块-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <exclusions>
+                <!--排除tomcat依赖-->
+                <exclusion>
+                    <artifactId>spring-boot-starter-tomcat</artifactId>
+                    <groupId>org.springframework.boot</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!--必备：undertow容器-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-undertow</artifactId>
+        </dependency>
+        <!-- <dependency>
+             <groupId>com.github.binarywang</groupId>
+             <artifactId>weixin-java-open</artifactId>
+             <version>3.9.4.B</version>
+         </dependency>-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-websocket</artifactId>
+        </dependency>
+
+
+        <!-- https://mvnrepository.com/artifact/com.github.jedis-lock/jedis-lock -->
+        <dependency>
+            <groupId>com.github.jedis-lock</groupId>
+            <artifactId>jedis-lock</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>5.4.4</version>
+        </dependency>
+
+        <!--消息通知jar包-->
+        <dependency>
+            <groupId>com.px</groupId>
+            <artifactId>px-visual-fastfile</artifactId>
+            <version>1.0.3</version>
+        </dependency>
+        <dependency>
+            <groupId>com.px</groupId>
+            <artifactId>px-visual-msg</artifactId>
+            <version>1.0.3</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.tencentcloudapi</groupId>
+            <artifactId>tencentcloud-sdk-java</artifactId>
+            <!-- go to https://search.maven.org/search?q=tencentcloud-sdk-java and get the latest version. -->
+            <!-- 请到 https://search.maven.org/search?q=tencentcloud-sdk-java 查询最新版本 -->
+            <version>3.1.87</version>
+        </dependency>
+        <!-- <dependency>
+             <groupId>com.github.binarywang</groupId>
+             <artifactId>weixin-java-miniapp</artifactId>
+             <version>3.9.9.B</version>
+             <scope>compile</scope>
+         </dependency>-->
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

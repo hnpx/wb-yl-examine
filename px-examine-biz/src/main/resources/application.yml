@@ -1,0 +1,212 @@
+# 加解密根密码
+jasypt:
+  encryptor:
+    password: pig #根密码
+
+# Spring 相关
+spring:
+  redis:
+    password: 
+    host: 127.0.0.1
+    port: 6379
+    database: 6
+  inetutils:
+    # 忽略网卡，eth.*，正则表达式
+    ignored-interfaces: eth.*
+    preferred-networks: ${discovery.server-ip}
+
+# 暴露监控端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+#请求处理的超时时间
+ribbon:
+  ReadTimeout: 10000
+  ConnectTimeout: 10000
+
+# mybaits-plus配置
+mybatis-plus:
+  mapper-locations: classpath:/mapper/*Mapper.xml
+  global-config:
+    banner: false
+    db-config:
+      id-type: auto
+      table-underline: true
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+# spring security 配置
+security:
+  oauth2:
+    # 通用放行URL，服务个性化，请在对应配置文件覆盖
+    ignore:
+      urls:
+        - /v2/api-docs
+        - /actuator/**
+        - /ser/**
+        - test
+# swagger 配置
+swagger:
+  title: Swagger API
+  # host: localhost:8080
+  # license: Powered By pig4cloud
+  # licenseUrl: https://pig4cloud.com
+  # terms-of-service-url: https://pig4cloud.com
+  contact:
+    email: zly@hnpinxun.cn
+    url: http://www.hnpinxun.cn
+  authorization:
+    name: PxOAuth
+    auth-regex: ^.*$
+#    authorization-scope-list:
+#      - scope: server
+#        description: server all
+    token-url-list:
+      - http://localhost:8100/oauth/token
+
+file:
+  temporary: F:/tmp/file
+
+fastfile:
+  method: cos
+  temp-dir: F:/data
+  root-dir: /data/sftp/mysftp/upload
+  sftp:
+    host: 127.0.0.1
+    port: 22
+    username: mysftp
+    password: 
+    timeout: 5000
+    aliveMax: 10
+    enable: true
+  cos:
+    region: ap-nanjing
+    bucket: yctk-1256675456
+    secret-id: 
+    secret-key: 
+  sites:
+    - key: home
+      accept: jpeg,png
+      sync: false
+      url: http://pic.cn
+      shrink:
+        - enable: true
+          scale: 0.3
+      result:
+        name: kname
+        path: kpath
+        type: ktype
+        shrink: sim
+    - key: yctk-1256675456
+      accept: jpeg,png,jpg,mp4,avi,rmvb,mkv
+      sync: false
+      url: https://yctk-1256675456.cos.ap-nanjing.myqcloud.com/
+      result:
+        name: kname
+        path: kpath
+        type: ktype
+        shrink: sim
+  types:
+    - type: jpeg
+      checkHeader: false
+      header: FFD8FF
+    - type: jpg
+      checkHeader: false
+      header: "FFD8FF"
+    - type: png
+      checkHeader: false
+      header: "89504E47"
+    - type: gif
+      checkHeader: false
+      header: "47494638"
+    - type: mp4
+      checkHeader: false
+      header: "47494638"
+    - type: avi
+      checkHeader: false
+      header: "47494638"
+    - type: rmvb
+      checkHeader: false
+      header: "47494638"
+    - type: mkv
+      checkHeader: false
+      header: "47494638"
+  multipart:
+    max-file-size: -1
+    max-request-size: -1
+
+fastmsg:
+  sms:
+    domain: dysmsapi.aliyuncs.com
+    access-key-id: 
+    access-secret: 
+    region-id: cn-hangzhou
+    enable: true
+  mp:
+    appid: 
+    secret: 
+  sms-temps:
+    - key: registMsg
+      id: SMS_206425008
+      msg-temp: 榆阳区行政审批服务局
+    - key: loginMsg
+      id: SMS_183780253
+      msg-temp: 榆阳区行政审批服务局
+    - key: createRoom
+      id: SMS_206450259
+      msg-temp: 榆阳区行政审批服务局
+    - key: remindRoom
+      id: SMS_206450260
+      msg-temp: 榆阳区行政审批服务局
+    - key: againPlan
+      id: SMS_206539646
+      msg-temp: 榆阳区行政审批服务局
+    - key: applyNotify
+      id: SMS_207150111
+      msg-temp: 榆阳区行政审批服务局
+    - key: applyNotifyFalse
+      id: SMS_207175115
+      msg-temp: 榆阳区行政审批服务局
+    - key: assignNotify #指派通知 TODO
+      id: SMS_207175094
+      msg-temp: 榆阳区行政审批服务局
+    - key: cancelNotify #踏勘取消通知 TODO
+      id: SMS_207160115
+      msg-temp: 榆阳区行政审批服务局
+    - key: sceneNotify #现场踏勘通知 TODO
+      id: SMS_207175110
+      msg-temp: 榆阳区行政审批服务局
+    - key: sceneNotifyUser #现场踏勘通知-商户 TODO
+      id: SMS_207160120
+      msg-temp: 榆阳区行政审批服务局
+  mp-temps:
+    - key: createRoom
+      id: wyl8PWE5mNSmhMIwsSa1luKrEcyZsmMhcG5WxxVsAfM
+      msg-temp: pages/index/index
+    - key: applyNotify
+      id: BPoCL-A56RhLJQanZ47qcVNN5OaQ8fDfsExDRZhsjuY
+      msg-temp: pages/index/index
+wx:
+  live:
+    configs:
+      - appid:  #微信小程序的appid
+        secret:   #微信小程序的Secret
+        token: #微信小程序消息服务器配置的token
+        aesKey: #微信小程序消息服务器配置的EncodingAESKey
+        msgDataFormat: JSON
+tencent:
+  trtc:
+    secret-id: 
+    secret-key: 
+    secret-appid: 
+    app-id: 
+    region: "ap-guangzhou"
+video-file:
+  overdue-day: 7
+  close-time: 60
